@@ -8,7 +8,15 @@ export const startSendMailConsumer = async () => {
   try {
     const kafka = new Kafka({
       clientId: "mail-service",
-      brokers: [process.env.Kafka_Broker || "localhost:9092"],
+      brokers: [process.env.KAFKA_BROKER || process.env.Kafka_Broker || "localhost:9092"],
+      ...(process.env.KAFKA_USERNAME && {
+        ssl: true,
+        sasl: {
+          mechanism: "scram-sha-256",
+          username: process.env.KAFKA_USERNAME,
+          password: process.env.KAFKA_PASSWORD || "",
+        },
+      }),
     });
 
     const consumer = kafka.consumer({ groupId: "mail-service-group" });
