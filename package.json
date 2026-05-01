@@ -1,0 +1,13 @@
+{
+  "name": "job-portal-root",
+  "version": "1.0.0",
+  "description": "Root package to manage microservices for local development",
+  "scripts": {
+    "install:all": "npm install --prefix frontend && npm install --prefix services/auth && npm install --prefix services/job && npm install --prefix services/payment && npm install --prefix services/user && npm install --prefix services/utils",
+    "build:all": "npm run build --prefix services/auth && npm run build --prefix services/job && npm run build --prefix services/payment && npm run build --prefix services/user && npm run build --prefix services/utils",
+    "dev:all": "concurrently -n \"AUTH,JOB,PAYMENT,USER,UTILS,FRONTEND\" -c \"bgBlue.bold,bgMagenta.bold,bgYellow.bold,bgCyan.bold,bgGreen.bold,bgWhite.bold\" \"npm run dev --prefix services/auth\" \"npm run dev --prefix services/job\" \"npm run dev --prefix services/payment\" \"npm run dev --prefix services/user\" \"npm run dev --prefix services/utils\" \"npm run dev --prefix frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
