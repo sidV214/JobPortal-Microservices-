@@ -36,6 +36,5 @@ Thumbs.db
 *.mp4
 *.webm
 *.mov
-# Do not ignore architecture PDFs if they are documentation, but ignore heavy media if needed.
-# kafka setup guide.pdf
-# resume analyser and about.pdf
+*.pdf
+
